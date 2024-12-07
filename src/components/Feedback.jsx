@@ -1,11 +1,13 @@
 import React from 'react'
 
-const Feedback = () => {
+const Feedback = ({ feedback }) => {
     return (
-        <div>Feedback</div>
+        <div>
+            <p>Good: {feedback.good}</p>
+            <p>Neutral: {feedback.neutral}</p>
+            <p>Bad: {feedback.bad}</p>
+        </div>
     )
 }
 
 export default Feedback
-
-

@@ -9,17 +9,28 @@ function App() {
         good: 0,
         neutral: 0,
         bad: 0,
-    })
-    function handleClick() {
-        setFeedback(good + 1)
-        console.log(feedback)
-    }
+    });
+
+    const handleClick = (type) => {
+        setFeedback(prevFeedback => {
+            if (type === 'reset') {
+                return { good: 0, neutral: 0, bad: 0 }
+            }
+            if (prevFeedback.hasOwnProperty(type)) {
+                return {
+                    ...prevFeedback,
+                    [type]: prevFeedback[type] + 1
+                }
+            }
+        })
+    };
+
     return (
         <>
             <Description />
             <Options onClick={handleClick} />
-            <Feedback></Feedback>
             {console.log(feedback)}
+            <Feedback feedback={feedback} />
         </>
     )
 }

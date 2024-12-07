@@ -1,12 +1,12 @@
 import React from 'react'
 
-const Options = (handleClick) => {
+const Options = ({onClick}) => {
     return (
         <>
-            <button>Good</button>
-            <button>Neutral</button>
-            <button>Bad</button>
-            <button>Reset</button>
+            <button onClick={() => onClick("good")}>Good</button>
+            <button onClick={() => onClick("neutral")}>Neutral</button>
+            <button onClick={() => onClick("bad")}>Bad</button>
+            <button onClick={() => onClick("reset")}>Reset</button>
         </>
     )
 }
