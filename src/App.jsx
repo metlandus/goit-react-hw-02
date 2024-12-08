@@ -11,9 +11,9 @@ function App() {
         bad: 0,
     });
 
-    let total = feedback.good + feedback.bad + feedback.neutral;
+    const totalFeedback = feedback.good + feedback.bad + feedback.neutral;
 
-    function handleClick(feedbackType) {
+    function updateFeedback(feedbackType) {
         if (feedbackType === 'reset') {
             setFeedback({ good: 0, neutral: 0, bad: 0 })
         } else {
@@ -29,8 +29,8 @@ function App() {
     return (
         <>
             <Description />
-            <Options onClick={handleClick} />
-            <Feedback feedback={feedback} total={total} />
+            <Options onClick={updateFeedback} total={totalFeedback} />
+            <Feedback feedback={feedback} total={totalFeedback} />
         </>
     )
 }
