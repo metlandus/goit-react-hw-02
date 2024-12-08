@@ -11,26 +11,26 @@ function App() {
         bad: 0,
     });
 
-    const handleClick = (type) => {
-        setFeedback(prevFeedback => {
-            if (type === 'reset') {
-                return { good: 0, neutral: 0, bad: 0 }
+    let total = feedback.good + feedback.bad + feedback.neutral;
+
+    function handleClick(feedbackType) {
+        if (feedbackType === 'reset') {
+            setFeedback({ good: 0, neutral: 0, bad: 0 })
+        } else {
+            setFeedback({
+                ...feedback,
+                [feedbackType]: feedback[feedbackType] + 1
             }
-            if (prevFeedback.hasOwnProperty(type)) {
-                return {
-                    ...prevFeedback,
-                    [type]: prevFeedback[type] + 1
-                }
-            }
-        })
+            )
+        }
     };
+
 
     return (
         <>
             <Description />
             <Options onClick={handleClick} />
-            {console.log(feedback)}
-            <Feedback feedback={feedback} />
+            <Feedback feedback={feedback} total={total} />
         </>
     )
 }
